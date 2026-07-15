@@ -1,7 +1,7 @@
 package app;
 
-import model.Cliente;
 import model.Direccion;
+import model.ProveedorHospedaje;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,6 +9,7 @@ public class Main {
 
         Direccion dir = new Direccion("asd", "asd", "asd");
 
-        Cliente cliente = new Cliente("Jaime", 45, dir);
+        ProveedorHospedaje cliente = new ProveedorHospedaje(
+                "Jaime", 45, dir, 800000, "Cabañas");
     }
 }

@@ -1,10 +1,10 @@
 package model;
 
-public class ProveedorHospedaje extends Persona {
+public class ProveedorHospedaje extends Empleado {
     private String tipoHospedaje;
 
-    public ProveedorHospedaje(String nombre, int edad, Direccion direccion, String tipoHospedaje) {
-        super(nombre, edad, direccion);
+    public ProveedorHospedaje(String nombre, int edad, Direccion direccion, double sueldo, String tipoHospedaje) {
+        super(nombre, edad, direccion, sueldo);
         this.tipoHospedaje = tipoHospedaje;
     }
 
