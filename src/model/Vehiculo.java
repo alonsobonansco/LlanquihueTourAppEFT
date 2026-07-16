@@ -1,30 +1,28 @@
 package model;
 
 public class Vehiculo implements Registrable {
-    private String tipo;
+    private String tipoVehiculo;
+    private String patente;
     private int capacidadMaxima;
 
-    public Vehiculo(String tipo, int capacidadMaxima) {
-        this.tipo = tipo;
+    public Vehiculo(String tipoVehiculo, int capacidadMaxima) {
+        this.tipoVehiculo = tipoVehiculo;
         this.capacidadMaxima = capacidadMaxima;
     }
 
     @Override
-    public void registrar() {
-        System.out.println("Vehiculo registrado");
-    }
-
-    @Override
-    public void mostrarDatos() {
-        System.out.println("Mostrando datos del vehículo");
+    public String mostrarDatos() {
+        return "Tipo: " + tipoVehiculo +
+                " | Patente: " + patente +
+                " | Capacidad máxima: " + capacidadMaxima + "\n";
     }
 
     public String getTipo() {
-        return tipo;
+        return tipoVehiculo;
     }
 
     public void setTipo(String tipo) {
-        this.tipo = tipo;
+        this.tipoVehiculo = tipoVehiculo;
     }
 
     public int getCapacidadMaxima() {
