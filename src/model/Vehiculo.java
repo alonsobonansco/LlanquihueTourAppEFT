@@ -5,9 +5,10 @@ public class Vehiculo implements Registrable {
     private String patente;
     private int capacidadMaxima;
 
-    public Vehiculo(String tipoVehiculo, int capacidadMaxima) {
-        this.tipoVehiculo = tipoVehiculo;
-        this.capacidadMaxima = capacidadMaxima;
+    public Vehiculo(String tipoVehiculo, String patente, int capacidadMaxima) {
+        setTipoVehiculo(tipoVehiculo);
+        setPatente(patente);
+        setCapacidadMaxima(capacidadMaxima);
     }
 
     @Override
@@ -17,12 +18,26 @@ public class Vehiculo implements Registrable {
                 " | Capacidad máxima: " + capacidadMaxima + "\n";
     }
 
-    public String getTipo() {
+    public String getTipoVehiculo() {
         return tipoVehiculo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipoVehiculo(String tipo) {
+        if (tipoVehiculo == null || tipoVehiculo.isBlank()) {
+            throw new IllegalArgumentException("El tipo de vehículo debe ser válido.");
+        }
         this.tipoVehiculo = tipoVehiculo;
+    }
+
+    public String getPatente() {
+        return patente;
+    }
+
+    public void setPatente(String patente) {
+        if (patente == null || patente.isBlank()) {
+            throw new IllegalArgumentException("La patente no es válida.");
+        }
+        this.patente = patente;
     }
 
     public int getCapacidadMaxima() {
@@ -30,11 +45,9 @@ public class Vehiculo implements Registrable {
     }
 
     public void setCapacidadMaxima(int capacidadMaxima) {
+        if (capacidadMaxima < 1) {
+            throw new IllegalArgumentException("El vehículo debe tener capacidad para al menos una persona.");
+        }
         this.capacidadMaxima = capacidadMaxima;
-    }
-
-    @Override
-    public String toString() {
-        return "Hola, soy un vehículo";
     }
 }

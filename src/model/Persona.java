@@ -6,11 +6,11 @@ public abstract class Persona {
     private String rut;
     private Direccion direccion;
 
-    public Persona(String nombre, int edad, String rut, Direccion direccion) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.rut = rut;
-        this.direccion = direccion;
+    public Persona(String nombre, int edad, String rut, String calle, String sector, String ciudad) {
+        setNombre(nombre);
+        setEdad(edad);
+        setRut(rut);
+        this.direccion = new Direccion(calle, sector, ciudad);
     }
 
     public String getNombre() {
@@ -18,6 +18,9 @@ public abstract class Persona {
     }
 
     public void setNombre(String nombre) {
+        if (nombre == null || nombre.isBlank()) {
+            throw new IllegalArgumentException("El nombre de la persona no puede estar vacío. ");
+        }
         this.nombre = nombre;
     }
 
@@ -26,6 +29,9 @@ public abstract class Persona {
     }
 
     public void setEdad(int edad) {
+        if (edad < 0) {
+            throw new IllegalArgumentException("La persona no puede tener edad negativa. ");
+        }
         this.edad = edad;
     }
 
@@ -34,6 +40,9 @@ public abstract class Persona {
     }
 
     public void setRut(String rut) {
+        if (rut == null || rut.isBlank()) {
+            throw new IllegalArgumentException("El rut de la persona no puede estar vacío. ");
+        }
         this.rut = rut;
     }
 

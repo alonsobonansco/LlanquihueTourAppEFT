@@ -1,11 +1,13 @@
 package model;
 
+import java.util.ArrayList;
+
 public class ProveedorHospedaje extends Empleado implements Registrable {
     private String tipoHospedaje;
 
-    public ProveedorHospedaje(String nombre, int edad, String rut, Direccion direccion, double sueldo, String tipoHospedaje) {
-        super(nombre, edad, rut, direccion, sueldo);
-        this.tipoHospedaje = tipoHospedaje;
+    public ProveedorHospedaje(String nombre, int edad, String rut, String calle, String sector, String ciudad, double sueldo, String tipoHospedaje) {
+        super(nombre, edad, rut, calle, sector, ciudad, sueldo);
+        setTipoHospedaje(tipoHospedaje);
     }
 
     @Override
@@ -20,11 +22,9 @@ public class ProveedorHospedaje extends Empleado implements Registrable {
     }
 
     public void setTipoHospedaje(String tipoHospedaje) {
+        if (tipoHospedaje == null || tipoHospedaje.isEmpty()) {
+            throw new IllegalArgumentException("El tipo de hospedaje no puede estar vacío. ");
+        }
         this.tipoHospedaje = tipoHospedaje;
-    }
-
-    @Override
-    public String toString() {
-        return "Info de Proveedor";
     }
 }
