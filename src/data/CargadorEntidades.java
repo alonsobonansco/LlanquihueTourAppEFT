@@ -2,6 +2,7 @@ package data;
 
 import model.Registrable;
 import util.LineaInvalidaException;
+import util.RutInvalidoException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,11 +33,13 @@ public class CargadorEntidades {
                     try {
                         String[] partes = linea.split(";");
 
-                        Registrable nuevaEntidad = EntidadesFactory.crearEntidad();
+                        Registrable nuevaEntidad = EntidadesFactory.crearEntidad(partes, linea, contadorLineas);
                         entidades.add(nuevaEntidad);
 
                     } catch (LineaInvalidaException e) {
                         System.out.println("Errorísimo");
+                    } catch (RutInvalidoException e) {
+                        System.out.println("Rut malo");
                     } catch (IllegalArgumentException e) {
                         String tipoError = e.getClass().getSimpleName();
 

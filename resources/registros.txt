@@ -1,0 +1,5 @@
+Chofer;José;50;11111111-1;a;b;c;999999;A2
+Guía;María;25;22222222-2;d;e;f;888888;Inglés|Alemán
+Hospedaje;Juan;40;33333333-3;g;h;i;777777;Cabañas
+Vehículo;Van;ABCD12;10
+Guía;Mario;32;44444444-4;j;k;l;666666;Francés|Italiano

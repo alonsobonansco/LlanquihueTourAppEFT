@@ -22,7 +22,7 @@ public class Vehiculo implements Registrable {
         return tipoVehiculo;
     }
 
-    public void setTipoVehiculo(String tipo) {
+    public void setTipoVehiculo(String tipoVehiculo) {
         if (tipoVehiculo == null || tipoVehiculo.isBlank()) {
             throw new IllegalArgumentException("El tipo de vehículo debe ser válido.");
         }
