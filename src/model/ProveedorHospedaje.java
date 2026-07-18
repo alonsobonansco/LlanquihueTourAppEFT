@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public class ProveedorHospedaje extends Empleado implements Registrable {
     private String tipoHospedaje;
 

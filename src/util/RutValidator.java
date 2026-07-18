@@ -4,19 +4,12 @@ public class RutValidator {
     public static void validarRut(String rut)
             throws RutInvalidoException {
 
-        if (rut == null ||
-                !rut.matches("^[0-9]{7,8}-[0-9kK]$")) {
-
-            throw new RutInvalidoException(
-                    "Formato de RUT inválido."
-            );
+        if (rut == null || !rut.matches("^[0-9]{7,8}-[0-9kK]$")) {
+            throw new RutInvalidoException("Formato de RUT inválido.");
         }
 
         if (!validarModulo11(rut)) {
-
-            throw new RutInvalidoException(
-                    "Dígito verificador incorrecto."
-            );
+            throw new RutInvalidoException("Dígito verificador incorrecto.");
         }
     }
 
@@ -31,7 +24,6 @@ public class RutValidator {
         int multiplicador = 2;
 
         for (int i = numero.length() - 1; i >= 0; i--) {
-
             suma += Character.getNumericValue(
                     numero.charAt(i)
             ) * multiplicador;
