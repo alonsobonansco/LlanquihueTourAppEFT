@@ -14,6 +14,7 @@ public class Chofer extends Empleado implements Registrable {
     public String mostrarDatos() {
         return "Nombre: " + super.getNombre() +
                 " | Edad: " + super.getEdad() +
+                " | Rut: " + super.getRut() +
                 " | Tipo Licencia: " + tipoLicencia + "\n";
     }
 

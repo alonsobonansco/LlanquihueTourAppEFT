@@ -56,6 +56,20 @@ public class GestorEntidades {
         return sb.toString();
     }
 
+    public boolean eliminarRegistro(String registroAEliminar) {
+        return listaRegistrables.removeIf(r -> switch (r) {
+            case Vehiculo v -> v.getPatente().equalsIgnoreCase(registroAEliminar);
+            case Chofer c -> c.getRut().equalsIgnoreCase(registroAEliminar);
+            case GuiaTuristico g -> g.getRut().equalsIgnoreCase(registroAEliminar);
+            case ProveedorHospedaje h -> h.getRut().equalsIgnoreCase(registroAEliminar);
+            default -> false;
+        });
+    }
+
+    public List<Registrable> getListaRegistrables() {
+        return this.listaRegistrables;
+    }
+
     public List<Registrable> buscarChoferPorLicencia(String tipoLicenciaBuscada) {
         List<Registrable> choferesEncontrados = new ArrayList<>();
 

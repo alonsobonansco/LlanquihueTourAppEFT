@@ -31,7 +31,7 @@ public class EntidadesFactory {
         String calle = partes[4];
         String sector = partes[5];
         String ciudad = partes[6];
-        double sueldo = Integer.parseInt(partes[7]);
+        double sueldo = Double.parseDouble(partes[7]);
 
         return switch (tipo) {
             case "Guía" -> {

@@ -19,6 +19,7 @@ public class GuiaTuristico extends Empleado implements Registrable {
 
         return "Nombre: " + super.getNombre() +
                 " | Edad: " + super.getEdad() +
+                " | Rut: " + super.getRut() +
                 " | Idiomas: " + listaIdiomas + "\n";
     }
 

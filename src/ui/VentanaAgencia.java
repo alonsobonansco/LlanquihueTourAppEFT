@@ -19,7 +19,7 @@ public class VentanaAgencia extends JFrame {
     public VentanaAgencia(GestorEntidades gestorEntidades) {
         this.gestorEntidades = gestorEntidades;
 
-        setTitle("Sistema de Registro - Llanquihue Tour App");
+        setTitle("Sistema de Registros - Llanquihue Tour App");
         setSize(500, 290);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -50,7 +50,8 @@ public class VentanaAgencia extends JFrame {
 
         btnRegistrar.addActionListener(e -> registrarEntidad());
         btnMostrar.addActionListener(e -> mostrarEntidades());
-        btnBuscar.addActionListener(e -> escogerBusqueda());
+        btnBuscar.addActionListener(e -> buscarEntidad());
+        btnEliminar.addActionListener(e -> eliminarEntidad());
     }
 
     public void registrarEntidad() {
@@ -264,7 +265,7 @@ public class VentanaAgencia extends JFrame {
                 this, registros, "Registro de todas las entidades", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public void escogerBusqueda() {
+    public void buscarEntidad() {
         String[] opciones = {"Guía", "Chofer", "Hospedaje", "Vehículo"};
 
         int opcionElegida = JOptionPane.showOptionDialog(
@@ -339,6 +340,23 @@ public class VentanaAgencia extends JFrame {
 
         if (!busqueda.isBlank()) {
             JOptionPane.showMessageDialog(this, sb.toString(), "Resultados de Búsqueda", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public void eliminarEntidad() {
+        String eliminar = JOptionPane.showInputDialog(this, "Ingrese el RUT o Patente a eliminar: ");
+        if (eliminar == null || eliminar.isBlank()) return;
+
+        boolean eliminado = gestorEntidades.eliminarRegistro(eliminar.trim());
+
+        if (eliminado) {
+            cargadorEntidades.sobrescribirEntidades(gestorEntidades.getListaRegistrables());
+
+            JOptionPane.showMessageDialog(
+                    this, "Registro eliminado con éxito.", "Registro eliminado", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(
+                    this, "No se encontró un registro que coincida.", "Registro no encontrado", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

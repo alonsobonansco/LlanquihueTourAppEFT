@@ -14,6 +14,7 @@ public class ProveedorHospedaje extends Empleado implements Registrable {
     public String mostrarDatos() {
         return "Nombre: " + super.getNombre() +
                 " | Edad: " + super.getEdad() +
+                " | Rut: " + super.getRut() +
                 " | Tipo Hospedaje: " + tipoHospedaje + "\n";
     }
 
