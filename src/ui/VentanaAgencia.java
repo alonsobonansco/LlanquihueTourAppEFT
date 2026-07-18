@@ -3,7 +3,6 @@ package ui;
 import data.CargadorEntidades;
 import data.EntidadesFactory;
 import model.Registrable;
-import model.Vehiculo;
 import service.GestorEntidades;
 import util.RutInvalidoException;
 
@@ -15,7 +14,7 @@ import java.util.List;
 
 public class VentanaAgencia extends JFrame {
     private final GestorEntidades gestorEntidades;
-    private CargadorEntidades cargadorEntidades = new CargadorEntidades();
+    private final CargadorEntidades cargadorEntidades = new CargadorEntidades();
 
     public VentanaAgencia(GestorEntidades gestorEntidades) {
         this.gestorEntidades = gestorEntidades;
@@ -105,7 +104,7 @@ public class VentanaAgencia extends JFrame {
                     String unirIdiomas = String.join("|", listaIdiomas);
 
                     String[] partesGuia = {
-                      "Guía", nombre, edadTexto, rut, calle, sector, ciudad, sueldoTexto, unirIdiomas
+                            "Guía", nombre, edadTexto, rut, calle, sector, ciudad, sueldoTexto, unirIdiomas
                     };
 
                     Registrable nuevoGuia = EntidadesFactory.crearEntidad(partesGuia);

@@ -6,7 +6,8 @@ public abstract class Persona {
     private String rut;
     private Direccion direccion;
 
-    public Persona(String nombre, int edad, String rut, String calle, String sector, String ciudad) {
+    public Persona(String nombre, int edad, String rut,
+                   String calle, String sector, String ciudad) {
         setNombre(nombre);
         setEdad(edad);
         setRut(rut);

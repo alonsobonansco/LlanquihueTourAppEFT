@@ -3,6 +3,7 @@ package service;
 import model.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class GestorEntidades {
@@ -21,18 +22,35 @@ public class GestorEntidades {
     public String mostrarRegistrables() {
         StringBuilder sb = new StringBuilder();
 
-        for (Registrable r : listaRegistrables) {
-            if (r instanceof GuiaTuristico guia) {
-                sb.append("- Guía -\n");
-            } else if (r instanceof Chofer chofer) {
-                sb.append("- Chofer -\n");
-            } else if (r instanceof ProveedorHospedaje hospedaje) {
-                sb.append("- Hospedaje -\n");
+        List<Registrable> listaOrdenada = listaRegistrables.stream()
+                .sorted(Comparator.comparing(r -> {
+                    if (r instanceof GuiaTuristico) return 1;
+                    if (r instanceof Chofer) return 2;
+                    if (r instanceof ProveedorHospedaje) return 3;
+                    return 4;
+                })).toList();
+
+        String ultimoTipo = "";
+
+        for (Registrable r : listaOrdenada) {
+            String tipoActual = "";
+
+            if (r instanceof GuiaTuristico) {
+                tipoActual = "- Guías -";
+            } else if (r instanceof Chofer) {
+                tipoActual = "- Choferes -";
+            } else if (r instanceof ProveedorHospedaje) {
+                tipoActual = "- Hospedajes -";
             } else {
-                sb.append("- Vehículo -\n");
+                tipoActual = "- Vehículos -";
             }
 
-            sb.append(r.mostrarDatos()).append("\n");
+            if (!tipoActual.equals(ultimoTipo)) {
+                sb.append("\n").append(tipoActual).append("\n");
+                ultimoTipo = tipoActual;
+            }
+
+            sb.append(r.mostrarDatos());
         }
 
         return sb.toString();
