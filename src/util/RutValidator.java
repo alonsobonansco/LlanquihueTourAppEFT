@@ -1,8 +1,7 @@
 package util;
 
 public class RutValidator {
-    public static void validarRut(String rut)
-            throws RutInvalidoException {
+    public static void validarRut(String rut) throws RutInvalidoException {
 
         if (rut == null || !rut.matches("^[0-9]{7,8}-[0-9kK]$")) {
             throw new RutInvalidoException("Formato de RUT inválido.");
@@ -24,9 +23,7 @@ public class RutValidator {
         int multiplicador = 2;
 
         for (int i = numero.length() - 1; i >= 0; i--) {
-            suma += Character.getNumericValue(
-                    numero.charAt(i)
-            ) * multiplicador;
+            suma += Character.getNumericValue(numero.charAt(i)) * multiplicador;
 
             multiplicador++;
 
