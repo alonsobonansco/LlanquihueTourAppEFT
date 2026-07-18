@@ -3,3 +3,5 @@ Guía;María;25;22222222-2;d;e;f;888888;Inglés|Alemán
 Hospedaje;Juan;40;33333333-3;g;h;i;777777;Cabañas
 Vehículo;Van;ABCD12;10
 Guía;Mario;32;44444444-4;j;k;l;666666;Francés|Italiano
+Guía;asd;21;11111111-1;asd;asd;asd;213;asfd
+Hospedaje;a;23;11111111-1;a;v;c;43;cabañas

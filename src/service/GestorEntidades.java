@@ -1,9 +1,6 @@
 package service;
 
-import model.Chofer;
-import model.GuiaTuristico;
-import model.ProveedorHospedaje;
-import model.Registrable;
+import model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +10,32 @@ public class GestorEntidades {
 
     public GestorEntidades(List<Registrable> listaRegistrables) {
         this.listaRegistrables = listaRegistrables;
+    }
+
+    public void agregarRegistrable(Registrable registrable) {
+        if (registrable != null) {
+            this.listaRegistrables.add(registrable);
+        }
+    }
+
+    public String mostrarRegistrables() {
+        StringBuilder sb = new StringBuilder();
+
+        for (Registrable r : listaRegistrables) {
+            if (r instanceof GuiaTuristico guia) {
+                sb.append("- Guía -\n");
+            } else if (r instanceof Chofer chofer) {
+                sb.append("- Chofer -\n");
+            } else if (r instanceof ProveedorHospedaje hospedaje) {
+                sb.append("- Hospedaje -\n");
+            } else {
+                sb.append("- Vehículo -\n");
+            }
+
+            sb.append(r.mostrarDatos()).append("\n");
+        }
+
+        return sb.toString();
     }
 
     public List<Registrable> buscarChoferPorLicencia(String tipoLicenciaBuscada) {
@@ -58,5 +81,19 @@ public class GestorEntidades {
         }
 
         return proveedoresEncontrados;
+    }
+
+    public List<Registrable> buscarVehiculoPorTipo(String vehiculoBuscado) {
+        List<Registrable> vehiculosEncontrados = new ArrayList<>();
+
+        for (Registrable r : listaRegistrables) {
+            if (r instanceof Vehiculo vehiculo) {
+                if (vehiculo.getTipoVehiculo().equalsIgnoreCase(vehiculoBuscado)) {
+                    vehiculosEncontrados.add((vehiculo));
+                }
+            }
+        }
+
+        return vehiculosEncontrados;
     }
 }

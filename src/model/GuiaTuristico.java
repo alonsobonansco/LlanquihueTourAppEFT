@@ -6,10 +6,9 @@ import java.util.List;
 public class GuiaTuristico extends Empleado implements Registrable {
     private List<String> idiomas;
 
-    public GuiaTuristico(
-            String nombre, int edad, String rut,
-            String calle, String sector, String ciudad,
-            double sueldo, List<String> idiomas) {
+    public GuiaTuristico(String nombre, int edad, String rut,
+                         String calle, String sector, String ciudad,
+                         double sueldo, List<String> idiomas) {
         super(nombre, edad, rut, calle, sector, ciudad, sueldo);
         setIdiomas(idiomas);
     }

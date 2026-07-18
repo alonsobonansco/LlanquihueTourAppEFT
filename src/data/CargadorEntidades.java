@@ -4,10 +4,7 @@ import model.Registrable;
 import util.LineaInvalidaException;
 import util.RutInvalidoException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +30,7 @@ public class CargadorEntidades {
                     try {
                         String[] partes = linea.split(";");
 
-                        Registrable nuevaEntidad = EntidadesFactory.crearEntidad(partes, linea, contadorLineas);
+                        Registrable nuevaEntidad = EntidadesFactory.crearEntidad(partes);
                         entidades.add(nuevaEntidad);
 
                     } catch (LineaInvalidaException e) {
@@ -54,5 +51,16 @@ public class CargadorEntidades {
         }
 
         return entidades;
+    }
+
+    public void escribirEntidades(String[] partes) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("resources/registros.txt", true))) {
+            String linea = String.join(";", partes);
+
+            writer.write(linea);
+            writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

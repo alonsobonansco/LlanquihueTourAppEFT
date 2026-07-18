@@ -7,13 +7,12 @@ import util.RutValidator;
 import java.util.List;
 
 public class EntidadesFactory {
-    public static Registrable crearEntidad(String[] partes, String linea, int contadorLineas) {
+    public static Registrable crearEntidad(String[] partes) {
         String tipo = partes[0];
 
         if (tipo.equals("Vehículo")) {
             if (partes.length != 4) {
-                throw new LineaInvalidaException("Formato no válido para un vehículo. ",
-                        linea, contadorLineas);
+                throw new LineaInvalidaException("Formato no válido para un vehículo. ");
             }
 
             String tipoVehiculo = partes[1];
@@ -37,8 +36,7 @@ public class EntidadesFactory {
         return switch (tipo) {
             case "Guía" -> {
                 if (partes.length != 9) {
-                    throw new LineaInvalidaException("Formato no válido para guía. ",
-                            linea, contadorLineas);
+                    throw new LineaInvalidaException("Formato no válido para guía. ");
                 }
                 List<String> idiomas = List.of(partes[8].split("\\|"));
                 yield new GuiaTuristico(nombre, edad, rut, calle, sector, ciudad, sueldo, idiomas);
@@ -46,8 +44,7 @@ public class EntidadesFactory {
 
             case "Chofer" -> {
                 if (partes.length != 9) {
-                    throw new LineaInvalidaException("Formato no válido para chofer. ",
-                            linea, contadorLineas);
+                    throw new LineaInvalidaException("Formato no válido para chofer. ");
                 }
                 String tipoLicencia = partes[8];
                 yield new Chofer(nombre, edad, rut, calle, sector, ciudad, sueldo, tipoLicencia);
@@ -55,16 +52,14 @@ public class EntidadesFactory {
 
             case "Hospedaje" -> {
                 if (partes.length != 9) {
-                    throw new LineaInvalidaException("Formato no válido para proveedor de hospedaje. ",
-                            linea, contadorLineas);
+                    throw new LineaInvalidaException("Formato no válido para proveedor de hospedaje. ");
                 }
                 String tipoHospedaje = partes[8];
                 yield new ProveedorHospedaje(nombre, edad, rut, calle, sector, ciudad, sueldo, tipoHospedaje);
             }
 
             default -> throw new LineaInvalidaException("Registro no válido. " +
-                    "Verifique que esté escrito correctamente y sea una entidad válida.\n",
-                    linea, contadorLineas);
+                    "Verifique que esté escrito correctamente y sea una entidad válida.\n");
         };
     }
 }
