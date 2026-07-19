@@ -236,7 +236,7 @@ public class VentanaAgencia extends JFrame {
                     int capacidadMaxima = Integer.parseInt(stringCapacidad);
 
                     String[] partesVehiculo = {
-                            "Hospedaje", tipoVehiculo, patente, stringCapacidad
+                            "Vehículo", tipoVehiculo, patente, stringCapacidad
                     };
 
                     Registrable nuevoVehiculo = EntidadesFactory.crearEntidad(partesVehiculo);
@@ -248,6 +248,7 @@ public class VentanaAgencia extends JFrame {
                     JOptionPane.showMessageDialog(
                             this, "Vehículo registrado correctamente.", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
                 } catch (NumberFormatException e) {
+                    e.printStackTrace();
                     JOptionPane.showMessageDialog(
                             this, "Debe ingresar una capacidad válida.", "Error", JOptionPane.INFORMATION_MESSAGE);
                 }

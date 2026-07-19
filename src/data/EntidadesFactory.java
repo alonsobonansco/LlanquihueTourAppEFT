@@ -19,10 +19,10 @@ public class EntidadesFactory {
             }
 
             String tipoVehiculo = partes[1];
-            String tipoPatente = partes[2];
+            String patente = partes[2];
             int capacidadMaxima = Integer.parseInt(partes[3]);
 
-            return new Vehiculo(tipoVehiculo, tipoPatente, capacidadMaxima);
+            return new Vehiculo(tipoVehiculo, patente, capacidadMaxima);
         }
 
         String nombre = partes[1];
