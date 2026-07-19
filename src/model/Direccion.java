@@ -1,7 +1,7 @@
 package model;
 
 /**
- *
+ * Representa la dirección de una persona.
  */
 public class Direccion {
     private String calle;

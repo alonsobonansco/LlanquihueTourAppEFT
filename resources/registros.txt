@@ -1,4 +1,4 @@
 Vehículo;Van;ABCD12;10
-Guía;Mario;40;22222222-2;calle1;sector1;ciudad1;1000000;Italiano|Francés
-Chofer;José;35;11111111-1;calle2;sector2;ciudad2;1000001;A2
-Hospedaje;María;51;33333333-3;calle3;sector3;ciudad3;1000004;Cabañas
+Guía;Mario;40;22222222-2;calle1;sector1;ciudad1;1000000.0;Italiano|Francés
+Chofer;José;35;11111111-1;calle2;sector2;ciudad2;1000001.0;A2
+Hospedaje;María;51;33333333-3;calle3;sector3;ciudad3;1000004.0;Cabañas
