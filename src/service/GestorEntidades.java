@@ -33,7 +33,7 @@ public class GestorEntidades {
         String ultimoTipo = "";
 
         for (Registrable r : listaOrdenada) {
-            String tipoActual = "";
+            String tipoActual;
 
             if (r instanceof GuiaTuristico) {
                 tipoActual = "- Guías -";

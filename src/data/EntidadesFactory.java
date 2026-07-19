@@ -6,6 +6,9 @@ import util.RutValidator;
 
 import java.util.List;
 
+/**
+ * Clase encargada de recibir partes y transformarlas en un objeto y devolverlo.
+ */
 public class EntidadesFactory {
     public static Registrable crearEntidad(String[] partes) {
         String tipo = partes[0];

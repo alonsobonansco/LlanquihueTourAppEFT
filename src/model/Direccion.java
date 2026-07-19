@@ -1,5 +1,8 @@
 package model;
 
+/**
+ *
+ */
 public class Direccion {
     private String calle;
     private String sector;

@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Clase padre de otras pero hija de Persona. Específica para representar Empleados.
+ */
 public abstract class Empleado extends Persona {
     private double sueldo;
 

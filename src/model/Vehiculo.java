@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Clase que representa un vehículo de la agencia.
+ */
 public class Vehiculo implements Registrable {
     private String tipoVehiculo;
     private String patente;

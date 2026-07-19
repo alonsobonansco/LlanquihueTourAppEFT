@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Subclase para representar un chofer. Atributo propio: tipoLicencia
+ */
 public class Chofer extends Empleado implements Registrable {
     private String tipoLicencia;
 

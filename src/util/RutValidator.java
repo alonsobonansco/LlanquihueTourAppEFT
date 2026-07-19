@@ -1,9 +1,12 @@
 package util;
 
+/**
+ * Clase para validar un rut.
+ */
 public class RutValidator {
     public static void validarRut(String rut) throws RutInvalidoException {
 
-        if (rut == null || !rut.matches("^[0-9]{7,8}-[0-9kK]$")) {
+        if (rut == null || !rut.matches("^[0-9]{6,8}-[0-9kK]$")) {
             throw new RutInvalidoException("Formato de RUT inválido.");
         }
 

@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Subclase para representar un proveedor de hospedaje. Atributo propio: tipoHospedaje
+ */
 public class ProveedorHospedaje extends Empleado implements Registrable {
     private String tipoHospedaje;
 

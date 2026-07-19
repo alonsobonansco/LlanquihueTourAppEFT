@@ -1,4 +1,4 @@
-Guía;María;25;22222222-2;d;e;f;888888.0;Inglés|Alemán
-Hospedaje;Juan;40;33333333-3;g;h;i;777777.0;Cabañas
 Vehículo;Van;ABCD12;10
-Guía;Mario;32;44444444-4;j;k;l;666666.0;Francés|Italiano
+Guía;Mario;40;22222222-2;calle1;sector1;ciudad1;1000000;Italiano|Francés
+Chofer;José;35;11111111-1;calle2;sector2;ciudad2;1000001;A2
+Hospedaje;María;51;33333333-3;calle3;sector3;ciudad3;1000004;Cabañas

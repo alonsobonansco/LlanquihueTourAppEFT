@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Subclase para representar un guía turístico. Atributo propio (List<>): idiomas
+ */
 public class GuiaTuristico extends Empleado implements Registrable {
     private List<String> idiomas;
 

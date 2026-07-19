@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * Superclase para representar a una persona genérica. No puede instanciarse.
+ * Aplica composición con la clase Direccion, obligando a todas las subclases a
+ * implementarla.
+ */
 public abstract class Persona {
     private String nombre;
     private int edad;

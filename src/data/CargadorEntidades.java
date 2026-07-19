@@ -8,13 +8,26 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
+/**
+ * Clase que maneja el archivo solicitado.
+ */
 public class CargadorEntidades {
+    /**
+     * Lee el archivo txt, manda sus partes a EntidadesFactory, este devuelve un objeto
+     * y aquí se agrega a una List y la devuelve.
+     *
+     * @param ruta Nombre del archivo.
+     * @return Una List con objetos registrables.
+     */
     public List<Registrable> cargarEntidades(String ruta) {
         List<Registrable> entidades = new ArrayList<>();
 
         try (InputStream is = CargadorEntidades.class.getResourceAsStream(ruta)) {
             if (is == null) {
-                System.err.println("Error. No se encontró " + ruta);
+                JOptionPane.showMessageDialog(
+                        null, "Error. No se encontró el archivo " + ruta, "Error de Archivo", JOptionPane.ERROR_MESSAGE);
                 return entidades;
             }
 
@@ -34,25 +47,34 @@ public class CargadorEntidades {
                         entidades.add(nuevaEntidad);
 
                     } catch (LineaInvalidaException e) {
-                        System.out.println("Errorísimo");
+                        JOptionPane.showMessageDialog(
+                                null, "Error en línea " + contadorLineas + " Formato no válido", "Error de Archivo", JOptionPane.ERROR_MESSAGE);
                     } catch (RutInvalidoException e) {
-                        System.out.println("Rut malo");
+                        JOptionPane.showMessageDialog(
+                                null, e.getMessage(), "RUT inválido", JOptionPane.ERROR_MESSAGE);
                     } catch (IllegalArgumentException e) {
                         String tipoError = e.getClass().getSimpleName();
 
-                        System.err.println("[" + tipoError + "] " + e.getMessage() +
-                                " (Línea " + contadorLineas + ": " + linea + ")");
+                        JOptionPane.showMessageDialog(
+                                null, "[" + tipoError + "] " + e.getMessage() +
+                                        " (Línea " + contadorLineas + ": " + linea + ")", "Error de Archivo", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
 
         } catch (IOException e) {
-            System.err.println("Error al cargar el archivo");
+            JOptionPane.showMessageDialog(
+                    null, "Error al cargar el archivo.", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
         return entidades;
     }
 
+    /**
+     * Añade los datos ingresados por el usuario al archivo txt.
+     *
+     * @param partes Datos ingresados por el usuario.
+     */
     public void escribirEntidades(String[] partes) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("resources/registros.txt", true))) {
             String linea = String.join(";", partes);
@@ -61,15 +83,22 @@ public class CargadorEntidades {
             writer.newLine();
             writer.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(
+                    null, "Error al registrar en el archivo.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
+    /**
+     * Escribe en el archivo txt la lista actualizada en modo append false, con el objetivo
+     * de sobrescribir los datos.
+     *
+     * @param listaActualizada Lista después de eliminar un registro.
+     */
     public void sobrescribirEntidades(List<Registrable> listaActualizada) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("resources/registros.txt", false))) {
             for (Registrable r : listaActualizada) {
                 String linea = "";
-                String unirIdiomas = "";
+                String unirIdiomas;
 
                 if (r instanceof Vehiculo v) {
                     linea = "Vehículo;" + v.getTipoVehiculo() + ";" + v.getPatente() + ";" + v.getCapacidadMaxima();
@@ -96,7 +125,8 @@ public class CargadorEntidades {
 
             writer.close();
         } catch (IOException e) {
-            System.out.println("Error al escribir en el archivo.");
+            JOptionPane.showMessageDialog(
+                    null, "Error al sobrescribir el arhivo.", "RUT inválido", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
